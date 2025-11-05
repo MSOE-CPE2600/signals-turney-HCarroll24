@@ -4,9 +4,10 @@
  */
 
 /**
- * Modified by:
+ * Modified by: Hunter Carroll
  * 
  * Brief summary of modifications:
+ * I added a pause and resume funcitonality to signal handler instead of exit(1)
  */
 
 
@@ -20,7 +21,9 @@
  */
 void handle_signal() {
     printf("Received a signal\n");
-    exit(1);
+    printf("Pausing...\n");
+    sleep(1);
+    printf("Resuming...\n");
 }
 
 int main() {

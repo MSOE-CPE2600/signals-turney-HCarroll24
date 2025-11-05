@@ -1,3 +1,6 @@
+Ignore all the build files
+signal_handler
+
 # Prerequisites
 *.d
 

@@ -2,6 +2,7 @@ Ignore all the build files
 signal_handler
 signal_alarm
 signal_segfault
+signal_sigaction
 
 # Prerequisites
 *.d

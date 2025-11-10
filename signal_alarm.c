@@ -16,22 +16,28 @@
 */
 void handle_signal()
 {
+    // print message whne signal is received
     printf("Alarm signal received\n");
     exit(0);
 }
 
 int main(int argc, char* argv[])
 {
+    // set alarm time to 5 seconds
     unsigned int alarm_time = 5;
 
+    // set alarm
     alarm(alarm_time);
 
+    // register signal handler
     signal(SIGALRM, handle_signal);
 
+    // infinite loop to sleep
     while(1) {
         printf("Sleeping\n");
         sleep(1);
     }
 
+    // return to exit
     return 0;
 }

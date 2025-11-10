@@ -17,6 +17,7 @@
 #include <signal.h>
 
 void handle_signal() {
+    // print message when segmentation faul tis received.
     printf("Segmentation fault received\n");
     return;
 }

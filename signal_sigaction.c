@@ -14,6 +14,7 @@
 #include <string.h>
 
 void handle_signal(int signum) {
+    // print message when signal is received
     printf("SIGUSR1 received\n");
     printf("Process ID: %d\n", getpid());
     fflush(stdout);
@@ -22,23 +23,32 @@ void handle_signal(int signum) {
 }
 
 int main(int argc, char* argv[]) {
+    // register signal handler
     struct sigaction sa;
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = handle_signal;
     sa.sa_flags = SA_RESTART;
     sigaction(SIGUSR1, &sa, NULL);
+
+    // initialize count
     int count = 0;
+
+    // infinite loop to sleep
     while(1) {
         sleep(1);
         printf("Sleeping\n");
         count++;
+        // raise signal if count between 5 and 7
         if(count > 5 && count < 7) {
             raise(SIGUSR1);
 
-        } else if (count > 7) {
+            // print messag ehwen signal received
+        } else if (count > 7) { // exit if count is greater than 7
             exit(0);
         }
     }
+
+    // return to exit
     return 0;
 }
 

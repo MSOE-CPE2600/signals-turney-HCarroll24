@@ -14,12 +14,13 @@
 #include <string.h>
 
 void handle_signal(int signum, siginfo_t *info, void *context) {
-    
+    // print sival_int
     printf("sival_int: %d\n", info->si_value.sival_int);
     return;
 }
 
 int main(int argc, char* argv[]) {
+    // Register signal handler
     struct sigaction sa;
     memset(&sa, 0, sizeof(sa));
     sa.sa_flags = SA_SIGINFO;
@@ -36,5 +37,6 @@ int main(int argc, char* argv[]) {
         sleep(1);
     }
 
+    // return to exit
     return 0;
 }

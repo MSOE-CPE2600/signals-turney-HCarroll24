@@ -1,3 +1,14 @@
+/**
+ * @file signal_research.c
+ *
+ * Author: Hunter Carroll
+ * Course: CPE 2600
+ * Section: 012
+ * Assignment: Lab 10
+ *
+ * Brief Summary
+ * Demonstrates the use of the kill() function
+*/
 #include <signal.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -9,10 +20,10 @@ int main(void)
     int signal_num;
 
     pid = getpid();
-    signal_num = SIGUSR1;
+    signal_num = SIGKILL;
 
     printf("Current process PID: %d\n", pid);
-    printf("Sending signal %d to process %d\n", signal_num, pid);
+    printf("Sending signal to process %d\n", pid);
     
     kill(pid, signal_num);
 
